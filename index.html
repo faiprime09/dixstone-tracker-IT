@@ -151,6 +151,16 @@ textarea{height:68px;}
 .vm-row.full{grid-column:span 2;}
 .vm-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);}
 .vm-val{font-size:13px;color:var(--text);font-weight:500;line-height:1.5;}
+
+/* SEARCH HIGHLIGHT */
+mark {
+  background: #fff176;
+  color: #1a2030;
+  border-radius: 3px;
+  padding: 0 2px;
+  font-weight: 700;
+}
+
 .toast{display:none;position:fixed;bottom:26px;right:26px;background:var(--navy);color:#fff;border-left:4px solid var(--gold);border-radius:10px;padding:13px 18px;font-size:13px;font-family:var(--fh);font-weight:600;box-shadow:0 8px 30px rgba(26,45,90,.25);z-index:999;max-width:340px;}
 .toast.show{display:block;animation:fi .3s ease;}
 @media(max-width:768px){.bwrap{padding:14px 12px;}.fgrid{grid-template-columns:1fr;}.fg.s2,.fg.s3{grid-column:span 1;}.stats{display:none;}.hdr{padding:0 12px;}.vm-grid{grid-template-columns:1fr;}.vm-row.full{grid-column:span 1;}}
@@ -397,6 +407,15 @@ const fmtS = d => {
   const [y,m,day]=d.split('-');
   return parseInt(day)+' '+['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][+m-1]+' '+y;
 };
+
+// ── HIGHLIGHT matched text ──
+function hi(text, q) {
+  if(!q || !text) return esc(text||'');
+  const escaped = esc(text);
+  const escapedQ = q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  return escaped.replace(new RegExp('(' + escapedQ + ')', 'gi'), '<mark>$1</mark>');
+}
+
 const bMap={'Open':'b-Open','In Progress':'b-In-Progress','Resolved':'b-Resolved','Closed':'b-Closed','Escalated':'b-Escalated'};
 const pdMap={'Low':'pd-Low','Medium':'pd-Medium','High':'pd-High','Critical':'pd-Critical'};
 const spMap={'Open':'sp-open','In Progress':'sp-prog','Resolved':'sp-res','Closed':'sp-closed','Escalated':'sp-esc'};
@@ -501,16 +520,16 @@ function renderDate(){
       <tr class="trow">
         <td class="td-num">${ti+1}</td>
         <td class="td-date">${fmtS(t.date)}</td>
-        <td class="td-task">${esc(t.task)}</td>
-        <td class="td-cell">${esc(t.category||'—')}</td>
+        <td class="td-task">${hi(t.task,q)}</td>
+        <td class="td-cell">${hi(t.category||'—',q)}</td>
         <td class="td-cell"><span class="pd ${pdMap[t.priority]||'pd-Medium'}"></span>${t.priority||'Medium'}</td>
-        <td class="td-user">${esc(t.users||'—')}</td>
-        <td class="td-desc">${esc(t.desc||'—')}</td>
-        <td class="td-desc">${esc(t.resolution||'—')}</td>
+        <td class="td-user">${hi(t.users||'—',q)}</td>
+        <td class="td-desc">${hi(t.desc||'—',q)}</td>
+        <td class="td-desc">${hi(t.resolution||'—',q)}</td>
         <td class="td-cell"><span class="badge ${bMap[t.status]||'b-Open'}">${t.status||'Open'}</span></td>
-        <td class="td-cell">${esc(t.assigned||'—')}</td>
+        <td class="td-cell">${hi(t.assigned||'—',q)}</td>
         <td class="td-cell">${t.followup?fmtS(t.followup):'—'}</td>
-        <td class="td-desc">${esc(t.remarks||'—')}</td>
+        <td class="td-desc">${hi(t.remarks||'—',q)}</td>
         <td class="td-act"><div class="td-act-col">
           <button class="abt view" onclick="openView('${t.fbKey}')">👁 View</button>
           <button class="abt edit" onclick="openEdit('${t.fbKey}')">✏️ Edit</button>
@@ -557,16 +576,16 @@ function renderAll(){
     <tr class="trow">
       <td class="td-num">${i+1}</td>
       <td class="td-date">${fmtS(t.date)}</td>
-      <td class="td-task">${esc(t.task)}</td>
-      <td class="td-cell">${esc(t.category||'—')}</td>
+      <td class="td-task">${hi(t.task,q)}</td>
+      <td class="td-cell">${hi(t.category||'—',q)}</td>
       <td class="td-cell"><span class="pd ${pdMap[t.priority]||'pd-Medium'}"></span>${t.priority||'Medium'}</td>
-      <td class="td-user">${esc(t.users||'—')}</td>
-      <td class="td-desc">${esc(t.desc||'—')}</td>
-      <td class="td-desc">${esc(t.resolution||'—')}</td>
+      <td class="td-user">${hi(t.users||'—',q)}</td>
+      <td class="td-desc">${hi(t.desc||'—',q)}</td>
+      <td class="td-desc">${hi(t.resolution||'—',q)}</td>
       <td class="td-cell"><span class="badge ${bMap[t.status]||'b-Open'}">${t.status||'Open'}</span></td>
-      <td class="td-cell">${esc(t.assigned||'—')}</td>
+      <td class="td-cell">${hi(t.assigned||'—',q)}</td>
       <td class="td-cell">${t.followup?fmtS(t.followup):'—'}</td>
-      <td class="td-desc">${esc(t.remarks||'—')}</td>
+      <td class="td-desc">${hi(t.remarks||'—',q)}</td>
       <td class="td-act"><div class="td-act-col">
         <button class="abt view" onclick="openView('${t.fbKey}')">👁 View</button>
         <button class="abt edit" onclick="openEdit('${t.fbKey}')">✏️ Edit</button>
