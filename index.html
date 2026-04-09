@@ -1060,7 +1060,7 @@ window.generateReport = () => {
   const cats=Object.entries(catC).sort((a,b)=>b[1]-a[1]);
   const maxCat=cats[0]?cats[0][1]:1;
   $('r-cat-stats').innerHTML = cats.length ? cats.map(([cat,n])=>`
-    <div class="r-stat-item"><span>${esc(cat)}</span><span style="font-weight:700">${n}</span></div>
+    <div class="r-stat-item"><span>${String(cat||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")}</span><span style="font-weight:700">${n}</span></div>
     <div class="r-bar"><div class="r-fill" style="width:${Math.round(n/maxCat*100)}%;background:var(--accent)"></div></div>
   `).join('') : '<div class="empty-msg">No tasks in period</div>';
 
@@ -1081,8 +1081,8 @@ window.generateReport = () => {
     <div class="r-attention-item">
       <span class="r-adot" style="background:${t.status==='Escalated'?'var(--danger)':'var(--warn)'}"></span>
       <div>
-        <div style="font-weight:600;font-size:11px">${esc(t.task)}</div>
-        <div style="font-size:10px;color:var(--muted)">${t.status} · ${esc(t.users||'N/A')}</div>
+        <div style="font-weight:600;font-size:11px">${String(t.task||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")}</div>
+        <div style="font-size:10px;color:var(--muted)">${t.status} · ${String(t.users||"N/A").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")}</div>
       </div>
     </div>`).join('') : '<div class="empty-msg">No urgent items ✅</div>';
 
@@ -1093,14 +1093,14 @@ window.generateReport = () => {
       <tr>
         <td style="color:var(--muted);font-family:'DM Mono',monospace;font-size:10px">${i+1}</td>
         <td style="font-family:'DM Mono',monospace;font-size:10px;white-space:nowrap;color:var(--accent)">${fmtShort(t.date)}</td>
-        <td class="tc-task">${esc(t.task)}</td>
-        <td style="font-size:10px;color:var(--muted)">${esc(t.category||'—')}</td>
+        <td class="tc-task">${String(t.task||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")}</td>
+        <td style="font-size:10px;color:var(--muted)">${String(t.category||"—").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")}</td>
         <td><span class="rpd ${rPdmap[t.priority]||'rpd-Medium'}"></span>${t.priority||'Medium'}</td>
-        <td style="color:#92400e;font-weight:600;font-size:10px">${esc(t.users||'—')}</td>
-        <td class="tc-desc">${esc(t.desc||'—')}</td>
-        <td class="tc-desc">${esc(t.resolution||'—')}</td>
+        <td style="color:#92400e;font-weight:600;font-size:10px">${String(t.users||"—").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")}</td>
+        <td class="tc-desc">${String(t.desc||"—").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")}</td>
+        <td class="tc-desc">${String(t.resolution||"—").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")}</td>
         <td><span class="r-badge ${rBmap[t.status]||'rb-Open'}">${t.status||'Open'}</span></td>
-        <td style="font-size:10px;color:var(--muted)">${esc(t.assigned||'—')}</td>
+        <td style="font-size:10px;color:var(--muted)">${String(t.assigned||"—").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")}</td>
       </tr>`).join('');
 
   // Summary sections
@@ -1110,12 +1110,12 @@ window.generateReport = () => {
   const now=new Date(); const nxtWk=new Date(); nxtWk.setDate(now.getDate()+7);
   const followups=allTasks.filter(t=>t.followup&&t.followup>=todayISO()&&new Date(t.followup)<=nxtWk&&!['Closed','Resolved'].includes(t.status)).sort((a,b)=>a.followup>b.followup?1:-1).slice(0,5);
 
-  const si=(t,color)=>`<div class="r-si"><span class="r-sidot" style="background:${color}"></span><div><div class="r-si-text">${esc(t.task)}</div><div class="r-si-meta">${esc(t.users||'—')} · ${esc(t.assigned||'N/A')}</div></div></div>`;
+  const si=(t,color)=>`<div class="r-si"><span class="r-sidot" style="background:${color}"></span><div><div class="r-si-text">${String(t.task||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")}</div><div class="r-si-meta">${String(t.users||"—").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")} · ${String(t.assigned||"N/A").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")}</div></div></div>`;
   const empty=m=>`<div class="empty-msg">${m}</div>`;
 
   $('r-sum-res').innerHTML  = resolved.length  ? resolved.slice(0,5).map(t=>si(t,'var(--success)')).join('') : empty('None resolved in this period');
   $('r-sum-open').innerHTML = openProg.length  ? openProg.slice(0,5).map(t=>si(t,'var(--warn)')).join('')    : empty('All tasks resolved ✅');
-  $('r-sum-fu').innerHTML   = followups.length ? followups.map(t=>`<div class="r-si"><span class="r-sidot" style="background:var(--accent)"></span><div><div class="r-si-text">${esc(t.task)}</div><div class="r-si-meta">Due: ${fmtShort(t.followup)} · ${esc(t.assigned||'N/A')}</div></div></div>`).join('') : empty('No upcoming follow-ups');
+  $('r-sum-fu').innerHTML   = followups.length ? followups.map(t=>`<div class="r-si"><span class="r-sidot" style="background:var(--accent)"></span><div><div class="r-si-text">${String(t.task||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")}</div><div class="r-si-meta">Due: ${fmtShort(t.followup)} · ${String(t.assigned||"N/A").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")}</div></div></div>`).join('') : empty('No upcoming follow-ups');
   $('r-sum-esc').innerHTML  = escalatedTasks.length ? escalatedTasks.map(t=>si(t,'var(--danger)')).join('')             : empty('No escalated items ✅');
 
   // Show report
