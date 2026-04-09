@@ -163,27 +163,27 @@ mark {
 
 /* ── REPORT CSS ── */
 /* ── SELECTOR UI ── */
-.ui-wrap{padding:28px 40px;max-width:980px;margin:0 auto;}
-.ui-title{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--navy);margin-bottom:6px;}
-.ui-sub{font-size:13px;color:var(--muted);margin-bottom:22px;}
-.selector-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:24px;box-shadow:0 2px 12px rgba(26,45,90,.06);margin-bottom:28px;}
-.sel-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:16px;}
-.sel-lbl{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);min-width:65px;}
-.pbtn{font-family:'Playfair Display',serif;font-size:12px;font-weight:700;padding:8px 18px;border-radius:999px;border:1.5px solid var(--border);background:#fff;color:var(--muted);cursor:pointer;transition:all .15s;}
-.pbtn:hover{border-color:var(--navy);color:var(--navy);}
-.pbtn.active{background:var(--navy);color:#fff;border-color:var(--navy);}
-.date-inp{font-family:'DM Mono',monospace;font-size:12px;padding:8px 12px;border:1.5px solid var(--border);border-radius:8px;background:#fff;color:var(--text);outline:none;}
-.date-inp:focus{border-color:var(--accent);}
-.custom-row{display:none;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:14px;}
-.custom-row.show{display:flex;}
-.btn-generate{font-family:'Playfair Display',serif;font-size:13px;font-weight:700;padding:11px 28px;background:var(--navy);color:#fff;border:none;border-radius:8px;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:8px;}
-.btn-generate:hover{background:var(--navy2);transform:translateY(-1px);box-shadow:0 6px 18px rgba(26,45,90,.22);}
-.btn-generate:disabled{opacity:.5;cursor:not-allowed;transform:none;}
-.btn-print{font-family:'Playfair Display',serif;font-size:13px;font-weight:700;padding:11px 24px;background:linear-gradient(135deg,#1d6f42,#2e9e5e);color:#fff;border:none;border-radius:8px;cursor:pointer;transition:all .2s;display:none;align-items:center;gap:8px;}
-.btn-print:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(29,111,66,.3);}
-.status-msg{font-size:12px;color:var(--muted);font-style:italic;margin-left:8px;}
-.conn-badge{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--muted);margin-bottom:14px;}
-.conn-dot{width:8px;height:8px;border-radius:50%;background:#f87171;flex-shrink:0;transition:background .3s;}
+.r-ui-wrap{padding:28px 40px;max-width:980px;margin:0 auto;}
+.r-ui-title{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--navy);margin-bottom:6px;}
+.r-ui-sub{font-size:13px;color:var(--muted);margin-bottom:22px;}
+.r-selector-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:24px;box-shadow:0 2px 12px rgba(26,45,90,.06);margin-bottom:28px;}
+.r-sel-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:16px;}
+.r-sel-lbl{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);min-width:65px;}
+.r-pbtn{font-family:'Playfair Display',serif;font-size:12px;font-weight:700;padding:8px 18px;border-radius:999px;border:1.5px solid var(--border);background:#fff;color:var(--muted);cursor:pointer;transition:all .15s;}
+.r-pbtn:hover{border-color:var(--navy);color:var(--navy);}
+.r-pbtn.active{background:var(--navy);color:#fff;border-color:var(--navy);}
+.r-date-inp{font-family:'DM Mono',monospace;font-size:12px;padding:8px 12px;border:1.5px solid var(--border);border-radius:8px;background:#fff;color:var(--text);outline:none;}
+.r-date-inp:focus{border-color:var(--accent);}
+.r-custom-row{display:none;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:14px;}
+.r-custom-row.show{display:flex;}
+.r-btn-generate{font-family:'Playfair Display',serif;font-size:13px;font-weight:700;padding:11px 28px;background:var(--navy);color:#fff;border:none;border-radius:8px;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:8px;}
+.r-btn-generate:hover{background:var(--navy2);transform:translateY(-1px);box-shadow:0 6px 18px rgba(26,45,90,.22);}
+.r-btn-generate:disabled{opacity:.5;cursor:not-allowed;transform:none;}
+.r-btn-print{font-family:'Playfair Display',serif;font-size:13px;font-weight:700;padding:11px 24px;background:linear-gradient(135deg,#1d6f42,#2e9e5e);color:#fff;border:none;border-radius:8px;cursor:pointer;transition:all .2s;display:none;align-items:center;gap:8px;}
+.r-btn-print:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(29,111,66,.3);}
+.r-status-msg{font-size:12px;color:var(--muted);font-style:italic;margin-left:8px;}
+
+.r-conn-dot{width:8px;height:8px;border-radius:50%;background:#f87171;flex-shrink:0;transition:background .3s;}
 
 /* ── REPORT PAGE ── */
 .report-wrap{display:none;margin-top:8px;}
@@ -275,12 +275,12 @@ mark {
 
 /* PRINT */
 @media print {
-  body{background:#fff;}
+  
   .ui-wrap > .ui-title,
   .ui-wrap > .ui-sub,
   .selector-card,
   .report-toolbar,
-  .conn-badge{display:none!important;}
+  
   .report-wrap{display:block!important;}
   .report-page{box-shadow:none;padding:0;max-width:100%;}
   @page{margin:12mm 15mm;size:A4;}
@@ -449,40 +449,40 @@ mark {
 
   <!-- ── REPORT ── -->
   <div class="panel" id="panel-report">
-<div class="ui-wrap">
+<div class="r-ui-wrap">
 
-  <div class="ui-title">📄 IT Task Report Generator</div>
-  <div class="ui-sub">Select a period, generate the report, then print or save as PDF</div>
+  <div class="r-ui-title">📄 IT Task Report Generator</div>
+  <div class="r-ui-sub">Select a period, generate the report, then print or save as PDF</div>
 
-  <div class="selector-card">
+  <div class="r-selector-card">
     <!-- Connection status -->
-    <div class="conn-badge">
-      <span class="conn-dot" id="conn-dot"></span>
+    <div class="r-conn-badge">
+      <span class="r-conn-dot" id="conn-dot"></span>
       <span id="conn-txt">Connecting to Firebase...</span>
     </div>
 
     <!-- Period selector -->
-    <div class="sel-row">
-      <span class="sel-lbl">Period</span>
-      <button class="pbtn active" onclick="setPeriod('today',this)">📅 Today</button>
-      <button class="pbtn" onclick="setPeriod('week',this)">📅 This Week</button>
-      <button class="pbtn" onclick="setPeriod('month',this)">📅 This Month</button>
-      <button class="pbtn" onclick="setPeriod('custom',this)">✏️ Custom Range</button>
+    <div class="r-sel-row">
+      <span class="r-sel-lbl">Period</span>
+      <button class="r-pbtn active" onclick="setPeriod('today',this)">📅 Today</button>
+      <button class="r-pbtn" onclick="setPeriod('week',this)">📅 This Week</button>
+      <button class="r-pbtn" onclick="setPeriod('month',this)">📅 This Month</button>
+      <button class="r-pbtn" onclick="setPeriod('custom',this)">✏️ Custom Range</button>
     </div>
 
     <!-- Custom date range -->
-    <div class="custom-row" id="custom-row">
-      <span class="sel-lbl">From</span>
-      <input type="date" class="date-inp" id="date-from">
-      <span class="sel-lbl">To</span>
-      <input type="date" class="date-inp" id="date-to">
+    <div class="r-custom-row" id="custom-row">
+      <span class="r-sel-lbl">From</span>
+      <input type="date" class="r-date-inp" id="date-from">
+      <span class="r-sel-lbl">To</span>
+      <input type="date" class="r-date-inp" id="date-to">
     </div>
 
     <!-- Actions -->
     <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
-      <button class="btn-generate" id="btn-gen" onclick="generateReport()">⚡ Generate Report</button>
-      <button class="btn-print" id="btn-print" onclick="window.print()">🖨️ Print / Save PDF</button>
-      <span class="status-msg" id="status-msg"></span>
+      <button class="r-btn-generate" id="btn-gen" onclick="generateReport()">⚡ Generate Report</button>
+      <button class="r-btn-print" id="btn-print" onclick="window.print()">🖨️ Print / Save PDF</button>
+      <span class="r-status-msg" id="status-msg"></span>
     </div>
   </div>
 
@@ -490,7 +490,7 @@ mark {
   <div class="report-wrap" id="report-wrap">
     <div class="report-toolbar">
       <div class="report-toolbar-l">📄 Report Preview — <span id="preview-label"></span></div>
-      <button class="btn-print" style="display:flex" onclick="window.print()">🖨️ Print / Save PDF</button>
+      <button class="r-btn-print" style="display:flex" onclick="window.print()">🖨️ Print / Save PDF</button>
     </div>
 
     <div class="report-page" id="report-page">
@@ -712,11 +712,15 @@ async function fetchTasks() {
 // ── TAB ──
 window.goTab = t => {
   document.querySelectorAll('.tbtn').forEach((b,i)=>b.classList.toggle('active',
-    (i===0&&t==='entry')||(i===1&&t==='date')||(i===2&&t==='all')
+    (i===0&&t==='entry')||(i===1&&t==='date')||(i===2&&t==='all')||(i===3&&t==='report')
   ));
-  ['entry','date','all'].forEach(p=>$('panel-'+p).classList.toggle('active',p===t));
-  if(t==='date') renderDate();
-  if(t==='all')  renderAll();
+  ['entry','date','all','report'].forEach(p=>{
+    const el=$('panel-'+p);
+    if(el) el.classList.toggle('active', p===t);
+  });
+  if(t==='date')   renderDate();
+  if(t==='all')    renderAll();
+  if(t==='report') initReport();
 };
 
 // ── FILTER HELPERS ──
@@ -995,7 +999,7 @@ async function loadReportTasks() {
 // ── PERIOD SELECTOR ──
 window.setPeriod = (p, el) => {
   selPeriod = p;
-  document.querySelectorAll('.pbtn').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.r-pbtn').forEach(b=>b.classList.remove('active'));
   el.classList.add('active');
   $('custom-row').classList.toggle('show', p==='custom');
 };
