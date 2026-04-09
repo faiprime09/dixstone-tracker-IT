@@ -161,6 +161,132 @@ mark {
   font-weight: 700;
 }
 
+/* ── REPORT CSS ── */
+/* ── SELECTOR UI ── */
+.ui-wrap{padding:28px 40px;max-width:980px;margin:0 auto;}
+.ui-title{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--navy);margin-bottom:6px;}
+.ui-sub{font-size:13px;color:var(--muted);margin-bottom:22px;}
+.selector-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:24px;box-shadow:0 2px 12px rgba(26,45,90,.06);margin-bottom:28px;}
+.sel-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:16px;}
+.sel-lbl{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);min-width:65px;}
+.pbtn{font-family:'Playfair Display',serif;font-size:12px;font-weight:700;padding:8px 18px;border-radius:999px;border:1.5px solid var(--border);background:#fff;color:var(--muted);cursor:pointer;transition:all .15s;}
+.pbtn:hover{border-color:var(--navy);color:var(--navy);}
+.pbtn.active{background:var(--navy);color:#fff;border-color:var(--navy);}
+.date-inp{font-family:'DM Mono',monospace;font-size:12px;padding:8px 12px;border:1.5px solid var(--border);border-radius:8px;background:#fff;color:var(--text);outline:none;}
+.date-inp:focus{border-color:var(--accent);}
+.custom-row{display:none;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:14px;}
+.custom-row.show{display:flex;}
+.btn-generate{font-family:'Playfair Display',serif;font-size:13px;font-weight:700;padding:11px 28px;background:var(--navy);color:#fff;border:none;border-radius:8px;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:8px;}
+.btn-generate:hover{background:var(--navy2);transform:translateY(-1px);box-shadow:0 6px 18px rgba(26,45,90,.22);}
+.btn-generate:disabled{opacity:.5;cursor:not-allowed;transform:none;}
+.btn-print{font-family:'Playfair Display',serif;font-size:13px;font-weight:700;padding:11px 24px;background:linear-gradient(135deg,#1d6f42,#2e9e5e);color:#fff;border:none;border-radius:8px;cursor:pointer;transition:all .2s;display:none;align-items:center;gap:8px;}
+.btn-print:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(29,111,66,.3);}
+.status-msg{font-size:12px;color:var(--muted);font-style:italic;margin-left:8px;}
+.conn-badge{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--muted);margin-bottom:14px;}
+.conn-dot{width:8px;height:8px;border-radius:50%;background:#f87171;flex-shrink:0;transition:background .3s;}
+
+/* ── REPORT PAGE ── */
+.report-wrap{display:none;margin-top:8px;}
+.report-wrap.show{display:block;}
+.report-toolbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:10px;}
+.report-toolbar-l{font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:var(--navy);}
+.report-page{background:#fff;max-width:920px;margin:0 auto;padding:48px 52px;box-shadow:0 4px 32px rgba(26,45,90,.12);border-radius:4px;}
+
+/* REPORT HEADER */
+.r-hdr{display:flex;align-items:flex-start;justify-content:space-between;padding-bottom:18px;border-bottom:3px solid var(--navy);margin-bottom:26px;}
+.r-logo-left{display:flex;align-items:center;gap:0;}
+.r-divider{width:2px;height:44px;background:var(--border);margin:0 14px;}
+.r-dept{display:flex;flex-direction:column;justify-content:center;}
+.r-dept-loc{font-size:10px;font-weight:700;color:var(--gold);letter-spacing:.16em;text-transform:uppercase;}
+.r-dept-name{font-size:13px;font-weight:700;color:var(--navy);margin-top:2px;}
+.r-right{text-align:right;}
+.r-report-title{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--navy);}
+.r-period-str{font-size:12px;color:var(--muted);margin-top:4px;}
+
+/* KPI */
+.r-kpi-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:26px;}
+.r-kpi{border:1px solid var(--border);border-radius:8px;padding:14px 12px;text-align:center;position:relative;overflow:hidden;}
+.r-kpi::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
+.r-kpi.kt::before{background:var(--navy);}
+.r-kpi.ko::before{background:var(--accent);}
+.r-kpi.kp::before{background:var(--warn);}
+.r-kpi.kr::before{background:var(--success);}
+.r-kpi.ke::before{background:var(--danger);}
+.r-kpi-num{font-family:'Playfair Display',serif;font-size:30px;font-weight:700;line-height:1;margin-bottom:4px;}
+.r-kpi.kt .r-kpi-num{color:var(--navy);}
+.r-kpi.ko .r-kpi-num{color:var(--accent);}
+.r-kpi.kp .r-kpi-num{color:var(--warn);}
+.r-kpi.kr .r-kpi-num{color:var(--success);}
+.r-kpi.ke .r-kpi-num{color:var(--danger);}
+.r-kpi-lbl{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);}
+
+/* SECTION TITLE */
+.r-sec{font-family:'Playfair Display',serif;font-size:13px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:.06em;margin-bottom:12px;padding-bottom:6px;border-bottom:1.5px solid var(--border);display:flex;align-items:center;gap:7px;}
+
+/* STATS ROW */
+.r-stats-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:26px;}
+.r-stat-box{border:1px solid var(--border);border-radius:8px;padding:13px 15px;}
+.r-stat-box h4{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:9px;padding-bottom:6px;border-bottom:1px solid var(--border);}
+.r-stat-item{display:flex;justify-content:space-between;align-items:center;padding:4px 0;font-size:11px;border-bottom:1px solid #f5f7fa;}
+.r-stat-item:last-child{border-bottom:none;}
+.r-bar{width:100%;height:4px;background:#f0f3f9;border-radius:2px;margin-top:3px;}
+.r-fill{height:100%;border-radius:2px;}
+.r-attention-item{display:flex;align-items:flex-start;gap:8px;padding:7px 0;border-bottom:1px solid #f5f7fa;font-size:11px;}
+.r-attention-item:last-child{border-bottom:none;}
+.r-adot{width:7px;height:7px;border-radius:50%;flex-shrink:0;margin-top:2px;}
+
+/* TABLE */
+.r-table{width:100%;border-collapse:collapse;font-size:10.5px;margin-bottom:24px;}
+.r-table thead tr{background:var(--navy);}
+.r-table th{color:rgba(255,255,255,.8);font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;padding:8px 9px;text-align:left;white-space:nowrap;border-bottom:2px solid var(--gold);}
+.r-table tbody tr{border-bottom:1px solid #f0f3f9;}
+.r-table tbody tr:nth-child(even){background:#f9fafb;}
+.r-table td{padding:7px 9px;vertical-align:top;}
+.tc-task{font-weight:700;color:var(--navy);max-width:140px;}
+.tc-desc{color:var(--muted);max-width:150px;line-height:1.4;}
+.r-badge{display:inline-flex;padding:2px 7px;border-radius:999px;font-size:9px;font-weight:700;white-space:nowrap;}
+.rb-Open{background:rgba(43,79,168,.1);color:#1e3a8a;}
+.rb-In-Progress{background:rgba(217,119,6,.1);color:#92400e;}
+.rb-Resolved{background:rgba(5,150,105,.1);color:#064e3b;}
+.rb-Closed{background:rgba(107,122,153,.1);color:#374151;}
+.rb-Escalated{background:rgba(220,38,38,.1);color:#991b1b;}
+.rpd{display:inline-block;width:6px;height:6px;border-radius:50%;margin-right:3px;vertical-align:middle;}
+.rpd-Low{background:var(--success);}
+.rpd-Medium{background:var(--warn);}
+.rpd-High{background:var(--danger);}
+.rpd-Critical{background:#991b1b;}
+
+/* SUMMARY */
+.r-sum-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:26px;}
+.r-sum-box{border:1px solid var(--border);border-radius:8px;padding:13px 15px;}
+.r-sum-box h4{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:9px;padding-bottom:6px;border-bottom:1px solid var(--border);}
+.r-si{display:flex;align-items:flex-start;gap:8px;padding:6px 0;border-bottom:1px solid #f5f7fa;font-size:11px;}
+.r-si:last-child{border-bottom:none;}
+.r-sidot{width:7px;height:7px;border-radius:50%;flex-shrink:0;margin-top:2px;}
+.r-si-text{font-weight:600;color:var(--text);line-height:1.3;}
+.r-si-meta{font-size:10px;color:var(--muted);margin-top:2px;}
+.empty-msg{font-size:11px;color:var(--muted);font-style:italic;padding:8px 0;}
+
+/* FOOTER */
+.r-footer{border-top:1.5px solid var(--border);padding-top:14px;display:flex;justify-content:space-between;align-items:center;margin-top:28px;}
+.r-footer-l{font-size:10px;color:var(--muted);}
+.r-footer-logo{font-family:'Playfair Display',serif;font-size:12px;font-weight:700;color:var(--navy);letter-spacing:3px;}
+.r-footer-r{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);}
+
+/* PRINT */
+@media print {
+  body{background:#fff;}
+  .ui-wrap > .ui-title,
+  .ui-wrap > .ui-sub,
+  .selector-card,
+  .report-toolbar,
+  .conn-badge{display:none!important;}
+  .report-wrap{display:block!important;}
+  .report-page{box-shadow:none;padding:0;max-width:100%;}
+  @page{margin:12mm 15mm;size:A4;}
+}
+
+
 .toast{display:none;position:fixed;bottom:26px;right:26px;background:var(--navy);color:#fff;border-left:4px solid var(--gold);border-radius:10px;padding:13px 18px;font-size:13px;font-family:var(--fh);font-weight:600;box-shadow:0 8px 30px rgba(26,45,90,.25);z-index:999;max-width:340px;}
 .toast.show{display:block;animation:fi .3s ease;}
 @media(max-width:768px){.bwrap{padding:14px 12px;}.fgrid{grid-template-columns:1fr;}.fg.s2,.fg.s3{grid-column:span 1;}.stats{display:none;}.hdr{padding:0 12px;}.vm-grid{grid-template-columns:1fr;}.vm-row.full{grid-column:span 1;}}
@@ -201,6 +327,7 @@ mark {
     <button class="tbtn active" onclick="goTab('entry')">✏️ New Entry</button>
     <button class="tbtn" onclick="goTab('date')">📅 By Date <span class="cbadge" id="tc-date">0</span></button>
     <button class="tbtn" onclick="goTab('all')">📋 All Tasks <span class="cbadge" id="tc-all">0</span></button>
+    <button class="tbtn" onclick="goTab('report')">📄 Report</button>
   </div>
 
   <!-- ── ENTRY ── -->
@@ -319,6 +446,129 @@ mark {
       </table>
     </div>
   </div>
+
+  <!-- ── REPORT ── -->
+  <div class="panel" id="panel-report">
+<div class="ui-wrap">
+
+  <div class="ui-title">📄 IT Task Report Generator</div>
+  <div class="ui-sub">Select a period, generate the report, then print or save as PDF</div>
+
+  <div class="selector-card">
+    <!-- Connection status -->
+    <div class="conn-badge">
+      <span class="conn-dot" id="conn-dot"></span>
+      <span id="conn-txt">Connecting to Firebase...</span>
+    </div>
+
+    <!-- Period selector -->
+    <div class="sel-row">
+      <span class="sel-lbl">Period</span>
+      <button class="pbtn active" onclick="setPeriod('today',this)">📅 Today</button>
+      <button class="pbtn" onclick="setPeriod('week',this)">📅 This Week</button>
+      <button class="pbtn" onclick="setPeriod('month',this)">📅 This Month</button>
+      <button class="pbtn" onclick="setPeriod('custom',this)">✏️ Custom Range</button>
+    </div>
+
+    <!-- Custom date range -->
+    <div class="custom-row" id="custom-row">
+      <span class="sel-lbl">From</span>
+      <input type="date" class="date-inp" id="date-from">
+      <span class="sel-lbl">To</span>
+      <input type="date" class="date-inp" id="date-to">
+    </div>
+
+    <!-- Actions -->
+    <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+      <button class="btn-generate" id="btn-gen" onclick="generateReport()">⚡ Generate Report</button>
+      <button class="btn-print" id="btn-print" onclick="window.print()">🖨️ Print / Save PDF</button>
+      <span class="status-msg" id="status-msg"></span>
+    </div>
+  </div>
+
+  <!-- REPORT -->
+  <div class="report-wrap" id="report-wrap">
+    <div class="report-toolbar">
+      <div class="report-toolbar-l">📄 Report Preview — <span id="preview-label"></span></div>
+      <button class="btn-print" style="display:flex" onclick="window.print()">🖨️ Print / Save PDF</button>
+    </div>
+
+    <div class="report-page" id="report-page">
+
+      <!-- HEADER -->
+      <div class="r-hdr">
+        <div class="r-logo-left">
+          <svg width="130" height="32" viewBox="0 0 320 56" xmlns="http://www.w3.org/2000/svg">
+            <text x="0" y="42" font-family="Arial" font-size="36" font-weight="700" letter-spacing="8" fill="#1A2D5A">DIXSTONE</text>
+            <g transform="translate(258,4)" fill="#1A2D5A">
+              <path d="M20,0C20,0,12,8,12,16C12,20,16,22,20,22C24,22,28,20,28,16C28,8,20,0,20,0Z" opacity=".9"/>
+              <path d="M6,14C6,14,0,20,0,28C0,32,4,34,8,34C12,34,16,32,16,28C16,20,6,14,6,14Z" opacity=".7"/>
+              <path d="M34,14C34,14,28,20,28,28C28,32,32,34,36,34C40,34,44,32,44,28C44,20,34,14,34,14Z" opacity=".7"/>
+            </g>
+          </svg>
+          <div class="r-divider"></div>
+          <div class="r-dept">
+            <div class="r-dept-loc">Dubai</div>
+            <div class="r-dept-name">IT Department</div>
+          </div>
+        </div>
+        <div class="r-right">
+          <div class="r-report-title">IT Task Follow-Up Report</div>
+          <div class="r-period-str" id="r-period-str">—</div>
+        </div>
+      </div>
+
+      <!-- KPI -->
+      <div class="r-sec">📊 Summary</div>
+      <div class="r-kpi-grid">
+        <div class="r-kpi kt"><div class="r-kpi-num" id="r-total">—</div><div class="r-kpi-lbl">Total Tasks</div></div>
+        <div class="r-kpi ko"><div class="r-kpi-num" id="r-open">—</div><div class="r-kpi-lbl">Open</div></div>
+        <div class="r-kpi kp"><div class="r-kpi-num" id="r-prog">—</div><div class="r-kpi-lbl">In Progress</div></div>
+        <div class="r-kpi kr"><div class="r-kpi-num" id="r-res">—</div><div class="r-kpi-lbl">Resolved</div></div>
+        <div class="r-kpi ke"><div class="r-kpi-num" id="r-esc">—</div><div class="r-kpi-lbl">Escalated</div></div>
+      </div>
+
+      <!-- STATS -->
+      <div class="r-stats-row">
+        <div class="r-stat-box"><h4>📂 By Category</h4><div id="r-cat-stats"></div></div>
+        <div class="r-stat-box"><h4>🔥 By Priority</h4><div id="r-pri-stats"></div></div>
+        <div class="r-stat-box"><h4>⚠️ Needs Attention</h4><div id="r-attention"></div></div>
+      </div>
+
+      <!-- TASK TABLE -->
+      <div class="r-sec">📋 All Tasks in Period</div>
+      <table class="r-table">
+        <thead><tr>
+          <th>#</th><th>Date</th><th>Task / Problem</th><th>Category</th>
+          <th>Priority</th><th>Users</th><th>Description</th>
+          <th>Resolution</th><th>Status</th><th>Assigned To</th>
+        </tr></thead>
+        <tbody id="r-tbody"></tbody>
+      </table>
+
+      <!-- SUMMARY -->
+      <div class="r-sec">📝 Summary</div>
+      <div class="r-sum-grid">
+        <div class="r-sum-box"><h4>🟢 Resolved in Period</h4><div id="r-sum-res"></div></div>
+        <div class="r-sum-box"><h4>🔴 Still Open / In Progress</h4><div id="r-sum-open"></div></div>
+        <div class="r-sum-box"><h4>📅 Upcoming Follow-ups</h4><div id="r-sum-fu"></div></div>
+        <div class="r-sum-box"><h4>🚨 Escalated Items</h4><div id="r-sum-esc"></div></div>
+      </div>
+
+      <!-- FOOTER -->
+      <div class="r-footer">
+        <div class="r-footer-l">
+          <div class="r-footer-logo">DIXSTONE</div>
+          <div style="margin-top:2px">Dubai · IT Department · Confidential</div>
+        </div>
+        <div class="r-footer-r" id="r-footer-date">—</div>
+      </div>
+
+    </div><!-- /report-page -->
+  </div><!-- /report-wrap -->
+</div>
+  </div>
+
 </div><!-- /bwrap -->
 
 <!-- EDIT MODAL -->
@@ -704,6 +954,187 @@ window.exportExcel = () => {
   XLSX.utils.book_append_sheet(wb,ws,"Task Log");
   XLSX.writeFile(wb,`Dixstone_Tasks_${todayISO()}.xlsx`);
 };
+
+// ── REPORT JS ──
+
+let selPeriod = 'today';
+
+const fmtFull = d => {
+  if(!d) return '—';
+  const [y,m,day]=d.split('-');
+  const mo=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  const dw=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  return dw[new Date(+y,+m-1,+day).getDay()]+', '+parseInt(day)+' '+mo[+m-1]+' '+y;
+};
+const rBmap={'Open':'rb-Open','In Progress':'rb-In-Progress','Resolved':'rb-Resolved','Closed':'rb-Closed','Escalated':'rb-Escalated'};
+const rPdmap={'Low':'rpd-Low','Medium':'rpd-Medium','High':'rpd-High','Critical':'rpd-Critical'};
+const priColors={'Low':getComputedStyle(document.documentElement).getPropertyValue('--success')||'#059669','Medium':'#d97706','High':'#dc2626','Critical':'#991b1b'};
+
+// ── FETCH FROM FIREBASE ──
+// loadReportTasks not needed — uses allTasks from tracker
+async function loadReportTasks() {
+  try {
+    const res = await fetch(DB + '?t=' + Date.now());
+    if(!res.ok) throw new Error('HTTP '+res.status);
+    const data = await res.json();
+    allTasks = [];
+    if(data && typeof data==='object') {
+      Object.entries(data).forEach(([k,v])=>{ if(v&&typeof v==='object') allTasks.push({fbKey:k,...v}); });
+    }
+    allTasks.sort((a,b)=>(b.id||0)-(a.id||0));
+    $('conn-dot').style.background = '#34d399';
+    $('conn-txt').textContent = 'Connected · Firebase · '+allTasks.length+' total tasks loaded';
+    $('status-msg').textContent = 'Ready — select period and generate report';
+    $('btn-gen').disabled = false;
+  } catch(e) {
+    $('conn-dot').style.background = '#f87171';
+    $('conn-txt').textContent = 'Connection error: '+e.message;
+  }
+}
+
+// ── PERIOD SELECTOR ──
+window.setPeriod = (p, el) => {
+  selPeriod = p;
+  document.querySelectorAll('.pbtn').forEach(b=>b.classList.remove('active'));
+  el.classList.add('active');
+  $('custom-row').classList.toggle('show', p==='custom');
+};
+
+// ── DATE RANGE ──
+function getDateRange() {
+  const now = new Date();
+  const y=now.getFullYear(), mo=now.getMonth(), d=now.getDate();
+
+  if(selPeriod==='today') {
+    const t=todayISO();
+    return { from:t, to:t, label: fmtFull(t) };
+  }
+  if(selPeriod==='week') {
+    const day=now.getDay(), diff=d-(day===0?6:day-1);
+    const mon=new Date(y,mo,diff);
+    const sun=new Date(y,mo,diff+6);
+    const f=mon.toISOString().slice(0,10), t=sun.toISOString().slice(0,10);
+    return { from:f, to:t, label:'Week: '+fmtShort(f)+' — '+fmtShort(t) };
+  }
+  if(selPeriod==='month') {
+    const f=new Date(y,mo,1).toISOString().slice(0,10);
+    const t=new Date(y,mo+1,0).toISOString().slice(0,10);
+    return { from:f, to:t, label:now.toLocaleDateString('en-GB',{month:'long',year:'numeric'}) };
+  }
+  if(selPeriod==='custom') {
+    const f=$('date-from').value, t=$('date-to').value;
+    if(!f||!t){ alert('Please select both From and To dates.'); return null; }
+    if(f>t){ alert('From date must be before To date.'); return null; }
+    return { from:f, to:t, label:'Custom: '+fmtShort(f)+' — '+fmtShort(t) };
+  }
+}
+
+// ── GENERATE REPORT ──
+window.generateReport = () => {
+  if(!allTasks.length){ alert('No tasks loaded from Firebase yet. Please wait.'); return; }
+  const range = getDateRange();
+  if(!range) return;
+
+  // Filter tasks for this period
+  const tasks = allTasks.filter(t => t.date >= range.from && t.date <= range.to);
+
+  $('r-period-str').textContent = range.label;
+  $('preview-label').textContent = range.label;
+  $('r-footer-date').textContent = 'Printed: '+new Date().toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'});
+
+  // KPIs
+  const total=tasks.length, open=tasks.filter(t=>t.status==='Open').length,
+    prog=tasks.filter(t=>t.status==='In Progress').length,
+    res=tasks.filter(t=>t.status==='Resolved').length,
+    esc=tasks.filter(t=>t.status==='Escalated').length;
+  $('r-total').textContent=total; $('r-open').textContent=open;
+  $('r-prog').textContent=prog; $('r-res').textContent=res; $('r-esc').textContent=esc;
+
+  // Category stats
+  const catC={};
+  tasks.forEach(t=>{const c=t.category||'Other';catC[c]=(catC[c]||0)+1;});
+  const cats=Object.entries(catC).sort((a,b)=>b[1]-a[1]);
+  const maxCat=cats[0]?cats[0][1]:1;
+  $('r-cat-stats').innerHTML = cats.length ? cats.map(([c,n])=>`
+    <div class="r-stat-item"><span>${esc(c)}</span><span style="font-weight:700">${n}</span></div>
+    <div class="r-bar"><div class="r-fill" style="width:${Math.round(n/maxCat*100)}%;background:var(--accent)"></div></div>
+  `).join('') : '<div class="empty-msg">No tasks in period</div>';
+
+  // Priority stats
+  const priOrder=['Critical','High','Medium','Low'];
+  const priColors2={'Critical':'#991b1b','High':'var(--danger)','Medium':'var(--warn)','Low':'var(--success)'};
+  const priC={};
+  tasks.forEach(t=>{const p=t.priority||'Medium';priC[p]=(priC[p]||0)+1;});
+  const maxPri=Math.max(...Object.values(priC),1);
+  $('r-pri-stats').innerHTML = priOrder.filter(p=>priC[p]).map(p=>`
+    <div class="r-stat-item"><span>${p}</span><span style="font-weight:700;color:${priColors2[p]}">${priC[p]||0}</span></div>
+    <div class="r-bar"><div class="r-fill" style="width:${Math.round((priC[p]||0)/maxPri*100)}%;background:${priColors2[p]}"></div></div>
+  `).join('') || '<div class="empty-msg">No tasks in period</div>';
+
+  // Attention items
+  const attention=tasks.filter(t=>t.status==='Escalated'||(t.status==='Open'&&['Critical','High'].includes(t.priority))).slice(0,5);
+  $('r-attention').innerHTML = attention.length ? attention.map(t=>`
+    <div class="r-attention-item">
+      <span class="r-adot" style="background:${t.status==='Escalated'?'var(--danger)':'var(--warn)'}"></span>
+      <div>
+        <div style="font-weight:600;font-size:11px">${esc(t.task)}</div>
+        <div style="font-size:10px;color:var(--muted)">${t.status} · ${esc(t.users||'N/A')}</div>
+      </div>
+    </div>`).join('') : '<div class="empty-msg">No urgent items ✅</div>';
+
+  // Task table
+  $('r-tbody').innerHTML = !tasks.length
+    ? '<tr><td colspan="10" style="text-align:center;padding:24px;color:var(--muted);font-style:italic">No tasks found for this period.</td></tr>'
+    : tasks.map((t,i)=>`
+      <tr>
+        <td style="color:var(--muted);font-family:'DM Mono',monospace;font-size:10px">${i+1}</td>
+        <td style="font-family:'DM Mono',monospace;font-size:10px;white-space:nowrap;color:var(--accent)">${fmtShort(t.date)}</td>
+        <td class="tc-task">${esc(t.task)}</td>
+        <td style="font-size:10px;color:var(--muted)">${esc(t.category||'—')}</td>
+        <td><span class="rpd ${rPdmap[t.priority]||'rpd-Medium'}"></span>${t.priority||'Medium'}</td>
+        <td style="color:#92400e;font-weight:600;font-size:10px">${esc(t.users||'—')}</td>
+        <td class="tc-desc">${esc(t.desc||'—')}</td>
+        <td class="tc-desc">${esc(t.resolution||'—')}</td>
+        <td><span class="r-badge ${rBmap[t.status]||'rb-Open'}">${t.status||'Open'}</span></td>
+        <td style="font-size:10px;color:var(--muted)">${esc(t.assigned||'—')}</td>
+      </tr>`).join('');
+
+  // Summary sections
+  const resolved=tasks.filter(t=>['Resolved','Closed'].includes(t.status));
+  const openProg=tasks.filter(t=>['Open','In Progress'].includes(t.status));
+  const escalated=tasks.filter(t=>t.status==='Escalated');
+  const now=new Date(); const nxtWk=new Date(); nxtWk.setDate(now.getDate()+7);
+  const followups=allTasks.filter(t=>t.followup&&t.followup>=todayISO()&&new Date(t.followup)<=nxtWk&&!['Closed','Resolved'].includes(t.status)).sort((a,b)=>a.followup>b.followup?1:-1).slice(0,5);
+
+  const si=(t,color)=>`<div class="r-si"><span class="r-sidot" style="background:${color}"></span><div><div class="r-si-text">${esc(t.task)}</div><div class="r-si-meta">${esc(t.users||'—')} · ${esc(t.assigned||'N/A')}</div></div></div>`;
+  const empty=m=>`<div class="empty-msg">${m}</div>`;
+
+  $('r-sum-res').innerHTML  = resolved.length  ? resolved.slice(0,5).map(t=>si(t,'var(--success)')).join('') : empty('None resolved in this period');
+  $('r-sum-open').innerHTML = openProg.length  ? openProg.slice(0,5).map(t=>si(t,'var(--warn)')).join('')    : empty('All tasks resolved ✅');
+  $('r-sum-fu').innerHTML   = followups.length ? followups.map(t=>`<div class="r-si"><span class="r-sidot" style="background:var(--accent)"></span><div><div class="r-si-text">${esc(t.task)}</div><div class="r-si-meta">Due: ${fmtShort(t.followup)} · ${esc(t.assigned||'N/A')}</div></div></div>`).join('') : empty('No upcoming follow-ups');
+  $('r-sum-esc').innerHTML  = escalated.length ? escalated.map(t=>si(t,'var(--danger)')).join('')             : empty('No escalated items ✅');
+
+  // Show report
+  $('report-wrap').classList.add('show');
+  $('btn-print').style.display = 'flex';
+  $('status-msg').textContent = tasks.length+' tasks found — report ready!';
+  setTimeout(()=>$('report-wrap').scrollIntoView({behavior:'smooth'}),100);
+};
+
+// ── REPORT INIT (called when tab is opened) ──
+function initReport() {
+  const now = new Date();
+  if($('date-from')) $('date-from').valueAsDate = new Date(now.getFullYear(), now.getMonth(), 1);
+  if($('date-to'))   $('date-to').valueAsDate = now;
+  if($('btn-gen'))   $('btn-gen').disabled = false;
+  if($('status-msg')) $('status-msg').textContent = 'Ready — tasks already loaded from Firebase';
+  // Use allTasks from tracker instead of separate fetch
+  if(allTasks.length) {
+    if($('conn-dot')) $('conn-dot').style.background='#34d399';
+    if($('conn-txt')) $('conn-txt').textContent='Connected · Firebase · '+allTasks.length+' tasks loaded';
+  }
+}
+
 
 function toast(msg){ const t=$('toast'); t.textContent=msg; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),3500); }
 
