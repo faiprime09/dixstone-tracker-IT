@@ -1050,9 +1050,9 @@ window.generateReport = () => {
   const total=tasks.length, open=tasks.filter(t=>t.status==='Open').length,
     prog=tasks.filter(t=>t.status==='In Progress').length,
     res=tasks.filter(t=>t.status==='Resolved').length,
-    esc=tasks.filter(t=>t.status==='Escalated').length;
+    escCnt=tasks.filter(t=>t.status==='Escalated').length;
   $('r-total').textContent=total; $('r-open').textContent=open;
-  $('r-prog').textContent=prog; $('r-res').textContent=res; $('r-esc').textContent=esc;
+  $('r-prog').textContent=prog; $('r-res').textContent=res; $('r-esc').textContent=escCnt;
 
   // Category stats
   const catC={};
@@ -1106,7 +1106,7 @@ window.generateReport = () => {
   // Summary sections
   const resolved=tasks.filter(t=>['Resolved','Closed'].includes(t.status));
   const openProg=tasks.filter(t=>['Open','In Progress'].includes(t.status));
-  const escalated=tasks.filter(t=>t.status==='Escalated');
+  const escalatedTasks=tasks.filter(t=>t.status==='Escalated');
   const now=new Date(); const nxtWk=new Date(); nxtWk.setDate(now.getDate()+7);
   const followups=allTasks.filter(t=>t.followup&&t.followup>=todayISO()&&new Date(t.followup)<=nxtWk&&!['Closed','Resolved'].includes(t.status)).sort((a,b)=>a.followup>b.followup?1:-1).slice(0,5);
 
@@ -1116,7 +1116,7 @@ window.generateReport = () => {
   $('r-sum-res').innerHTML  = resolved.length  ? resolved.slice(0,5).map(t=>si(t,'var(--success)')).join('') : empty('None resolved in this period');
   $('r-sum-open').innerHTML = openProg.length  ? openProg.slice(0,5).map(t=>si(t,'var(--warn)')).join('')    : empty('All tasks resolved ✅');
   $('r-sum-fu').innerHTML   = followups.length ? followups.map(t=>`<div class="r-si"><span class="r-sidot" style="background:var(--accent)"></span><div><div class="r-si-text">${esc(t.task)}</div><div class="r-si-meta">Due: ${fmtShort(t.followup)} · ${esc(t.assigned||'N/A')}</div></div></div>`).join('') : empty('No upcoming follow-ups');
-  $('r-sum-esc').innerHTML  = escalated.length ? escalated.map(t=>si(t,'var(--danger)')).join('')             : empty('No escalated items ✅');
+  $('r-sum-esc').innerHTML  = escalatedTasks.length ? escalatedTasks.map(t=>si(t,'var(--danger)')).join('')             : empty('No escalated items ✅');
 
   // Show report
   $('report-wrap').classList.add('show');
